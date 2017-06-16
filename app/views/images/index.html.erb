@@ -1,0 +1,6 @@
+<h4><%= link_to "Back" ,:back %></h4>
+<h1>Images index</h1>
+<h4><%= link_to "image",new_image_path %></h4>
+<% @images.each do |image| %>
+    <%= image_tag image.avatar %>
+<% end %>

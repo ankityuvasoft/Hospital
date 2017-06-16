@@ -1,0 +1,11 @@
+<h1>Edit Doctor"s Detail</h1>
+<h4><%= link_to "Back" ,:back %></h4>
+<h4><%= link_to "Exit" ,root_path %></h4>
+<h4><%= link_to "doctor list" ,doctors_path %></h4>
+<%= form_for @doctor do |doctor| %>
+	<%= doctor.label :name %>:
+	<%= doctor.text_field :name %><br />
+	<%= doctor.label :speciality %>:
+	<%= doctor.text_field :speciality %><br />
+	<%= doctor.submit %>
+<%end%>

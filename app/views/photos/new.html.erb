@@ -1,0 +1,16 @@
+<h1>Upload Photo</h1>
+<%= form_for @photo, html: { multipart: true }, remote: true  do |f| %>
+  <%= f.label :title %>:
+  <%= f.text_field :title %><br>
+
+  <%= f.submit 'Upload Photo' %>
+<%end %>
+
+<h1>Photos index</h1>
+<div id="photo-form">
+	<% @photos.each do |photo| %>
+		<%= link_to image_tag(photo.image.url), photo.image.url %>
+		<%= link_to 'Remove', photo_path(photo), method: :delete, data: {confirm: 'Are you sure?'} %>
+		<h4><%= photo.title %></h4>
+	<% end %>
+</div>

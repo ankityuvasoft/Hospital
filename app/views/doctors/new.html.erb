@@ -1,0 +1,17 @@
+<%= tinymce %>
+<h1>Add Doctor</h1>
+<h4><%= link_to "Back" ,:back %></h4>
+<h4><%= link_to "Exit" ,root_path %></h4>
+<h4><%= link_to "doctor list" ,doctors_path %></h4>
+<%= simple_form_for @doctor,html: { multipart: true } do |doctor| %>
+	<%#= doctor.label :name %>
+	<%#= doctor.text_field :name %>
+	<%#= doctor.label :speciality %>
+	<%#= doctor.text_field :speciality %>
+	<%#= doctor.submit %>
+	<%= doctor.input :name, label: 'Doctor Name' %>
+	<%#= doctor.input :speciality %>
+	<%= doctor.text_area :speciality, :class => "tinymce", :rows => 40, :cols => 60 %>
+	<%= doctor.file_field :avatars, multiple: true %>
+	<%= doctor.button :submit %>
+<%end%>

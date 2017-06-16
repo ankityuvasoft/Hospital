@@ -1,0 +1,24 @@
+<h1 align="center">User List</h1>
+<h4><%= link_to "Back" ,:back %></h4>
+<h4><%= link_to "Exit" ,root_path %></h4>
+<h4><%= link_to "Add User" ,new_user_path %></h4>
+
+
+
+<h4><%=link_to "Back", :back %></h4>
+<h4><%=link_to "Exit", root_path %></h4>
+<%= simple_form_for @entry,  html: { multipart: true } do |entry| %>
+  <%= entry.input :username %>
+  <%= entry.input :password %>
+  <%= entry.input :email %>
+  <%= entry.input :age, collection: 14..60, prompt: "Select your age", selected: 21 %>
+  <%= entry.input :description,as: :text %>
+  <%#= entry.input :gender,     as: :radio_buttons %>
+  <%= entry.collection_radio_buttons :gender, [[true, 'Male'] ,[false, 'Female']], :first, :last %>
+  <%= entry.input :remember_me, as: :boolean %> I have read all terms & conditions.<br>
+  <%= entry.collection_check_boxes(:remember_me, Entry.all, :id, :username) do |entry| %>
+  <%= entry.label { entry.check_box } %>
+  <% end %>
+   <%= entry.input :avatar, as: :file %>
+  <%= entry.button :submit %>
+<%end%>

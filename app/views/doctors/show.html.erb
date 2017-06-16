@@ -1,0 +1,19 @@
+<h1 align="center">Doctor Detail</h1>
+<h4><%= link_to "Back" ,:back %></h4>
+<h4><%= link_to "Exit" ,root_path %></h4>
+<table align="center" border="">
+	<tr>
+		<th>Name</th>
+		<th>Speciality</th>
+	</tr>
+	<tr>
+		<td><%= @doctor.name %></td>
+		<td><%= raw(@doctor.speciality) %></td>
+		<%#= image_tag(@doctor.avatars[0]) %>
+		<td><% @doctor.avatars.each do |img|  %></td>
+			<%= image_tag img.url(:thumb)%>
+			<%#= img.image_tag.avatars %>
+			<%#=img.image_tag(avatars.url) %>
+		<%end%>
+	</tr>
+</table>

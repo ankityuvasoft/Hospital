@@ -1,0 +1,3 @@
+<h4><%= link_to "add article", new_article_path, remote: true %>
+<div id="article-form"></div>
+<div id="article"><%= render 'articles/article', article: @articles %></div>

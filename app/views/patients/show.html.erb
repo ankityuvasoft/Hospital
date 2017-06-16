@@ -1,0 +1,13 @@
+<h1 align="center">Patients Detail</h1>
+<h4><%= link_to "Back" ,:back %></h4>
+<h4><%= link_to "Exit" ,root_path %></h4>
+<table align="center" border="">
+	<tr>
+		<th>Name</th>
+		<th>Address</th>
+	</tr>
+	<tr>
+		<td><%= @patient.name %></td>
+		<td><%= raw(@patient.address) %></td>
+	</tr>
+</table>

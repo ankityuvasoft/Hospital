@@ -1,0 +1,10 @@
+<h4><%= link_to "Back" ,:back %></h4>
+<h4><%= link_to "Exit" ,root_path %></h4>
+<h4><%= link_to "patient list" ,patients_path %></h4>
+<%= form_for @patient do |patient| %>
+	<%= patient.label :name %>:
+	<%= patient.text_field :name %><br />
+	<%= patient.label :address %>:
+	<%= patient.text_field :address %><br />
+	<%= patient.submit %>
+<%end%>

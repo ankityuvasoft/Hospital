@@ -1,0 +1,36 @@
+<div align="center">
+	<% @posts.each do |post| %>
+		<strong><%= post.host.first_name %>'s Post</strong><br />
+		Title: <%= post.title %><br />
+		Content: <td><%= post.content %></td><br />
+		<td>
+			<button class="delete-btn" id="delete_<%=post.id%>">Delete</button>
+		</td>
+		<% if post.likes.where(user_id: current_user.id).present? %>
+			<td>
+				<%=link_to "Unlike",post_like_path(:post_id=>post,:id=>post.likes),method: :delete, remote: :true  %><%=post.likes.count%>
+			</td>
+			<p>......................................................</p>
+			<br><br><br><br>
+		<%else%>
+			<td>
+				<%= link_to "like", post_likes_path(post) , method: :post, remote: :true %><%= post.likes.count%>
+			</td>
+			<br><br><br><br>
+			<p>......................................................</p>
+		<%end%>
+	<%end%>
+</div>
+<script type="text/javascript">
+  $(".delete-btn").click(function(){
+    var post_id= this.id.split("_")[1];
+    $.ajax({
+    type: "DELETE",
+    url: "/posts/"+post_id,
+    data: { post_id:post_id},
+    success : function(data) {
+          alert("Post delete successfully");
+        }
+  })
+  })
+</script>

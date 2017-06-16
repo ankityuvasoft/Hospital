@@ -1,0 +1,12 @@
+<%= nested_form_for @user do |f| %>
+<%=f.label :name%>
+<%=f.text_field :name%><br/>
+<%=f.label :address%>
+<%=f.text_field :address%><br />
+<%= f.fields_for :accounts do |account| %>
+  <%= account.text_field :name %>
+  <%= account.link_to_remove "Remove this Account" %>
+<% end %>
+<p><%= f.link_to_add "Add an Account", :accounts  %></p>
+<%=f.submit%>
+<%end%>

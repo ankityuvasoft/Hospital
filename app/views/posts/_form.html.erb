@@ -1,0 +1,7 @@
+<%= form_for @post, remote: :true do |post|%>
+	<%= post.label :title%>
+	<%= post.text_field :title%><br />
+	<%= post.label :content %>
+	<%= post.text_area :content %><br />
+	<%= post.submit "submit" %>
+<% end %>

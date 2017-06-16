@@ -1,0 +1,15 @@
+<h1>Add Appointments</h1>
+<h4><%= link_to "Back" ,:back %></h4>
+<h4><%= link_to "Exit" ,root_path %></h4>
+<h4><%= link_to "Appointment list" ,appointments_path %></h4>
+<%= form_for @appointment do |appointment| %>
+	<%= appointment.label :doctor_id ,"Select Doctor" %>:
+	<%= appointment.collection_select(:doctor_id,Doctor.all,:id,:name) %><br />
+	<%#= appointment.fields_for :patient do |patient| %>
+		<%= appointment.label :patient_id,"Select Patient" %>:
+		<%= appointment.collection_select(:patient_id,Patient.all,:id,:name) %><br />
+		<%#= appointment.fields_for :doctor do |doctor| %>
+			<%= appointment.label :date,"Date" %>:
+			<%= appointment.date_select :date %><br />
+			<%= appointment.submit %>
+<%end%>

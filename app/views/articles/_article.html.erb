@@ -1,0 +1,17 @@
+<table align="center" border="">
+	<tr>
+		<th>Title</th>
+		<th>Description</th>
+		<th colspan="2">Action</th>
+	</tr>
+	<tr>
+		<% @articles.each do |article|%>
+		<td><%= article.title %><br></td>
+		<td><%= article.description %><br></td>
+		<td><%= link_to "edit",edit_article_path(article),remote: true %></td>
+		<td> <%= link_to "Delete" ,{ action: :destroy, id: article}, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %></td>
+	</tr>
+		<% end %>
+</table>
+
+

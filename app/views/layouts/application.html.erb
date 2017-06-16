@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hospital</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script>
+	$(document).ready(function(){
+    $("p").click(function(){
+        $(this).hide();
+    });
+});
+</script>
+</head>
+<!-- <body style="background-color:#4286f4;color:white"> -->
+<body>
+
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+<% if host_signed_in? %>
+
+	Logged in as <%= current_host.email %><br/>
+	
+	<%= link_to "Edit profile",edit_host_registration_path %> |
+	<%= link_to "Logout", destroy_host_session_path, method: :delete %>
+<%else%>
+	<%= link_to "Sign up", new_host_registration_path %> |
+	<%= link_to "Sign in", new_host_session_path %> |
+  <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+<% end %>
+<%= yield %>
+
+</body>
+</html>
