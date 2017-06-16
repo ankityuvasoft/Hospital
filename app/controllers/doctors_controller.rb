@@ -4,6 +4,8 @@ class DoctorsController < ApplicationController
   def index
   	@doctors = Doctor.all
   end
+  def snadeep
+  end
   def new
   	@doctor = Doctor.new
   end
